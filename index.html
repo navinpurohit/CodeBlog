@@ -15,7 +15,7 @@ Released   : 20120902
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Emerald by FCT</title>
+<title>Linked List</title>
 <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
@@ -24,7 +24,7 @@ Released   : 20120902
 	<div id="header-wrapper" class="container">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">Emerald </a></h1>
+			<h1><a href="#">LinkedList in Java </a></h1>
 		</div>
 		<div id="menu">
 			<ul>
@@ -42,32 +42,146 @@ Released   : 20120902
 	<div id="page">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Welcome to Emerald </a></h2>
-				<p class="meta"><span class="date">August 28, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+				<h2 class="title"><a href="#">Linked List implementation in Java </a></h2>
+				<p class="meta"><span class="date">December 4, 2016</span><span class="posted">Posted by <a href="#">Navin</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					<p>This is <strong>Emerald </strong>, a free, fully standards-compliant CSS template designed by <a href="http://www.freecsstemplates.org">FCT</a>.  This free template is released under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :)</p>
-					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+					<p>This is <strong>LinkedList </strong> implementation in java, we are implementing linked list in java with insertion ,deletion in linked list
+					with first insertion, last insertion, insertion at specific position ,first deletion, last deletion etc</p>
 					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
 				</div>
 			</div>
 			<div class="post">
-				<h2 class="title"><a href="#">Lorem ipsum sed aliquam</a></h2>
-				<p class="meta"><span class="date">August 20, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+				<h2 class="title"><a href="#">Implementation</a></h2>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
-					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
-				</div>
+						class Link{
+		
+		int data1;
+		Link nextLink;
+		
+		Link(int d1){
+			data1=d1;	
+			}
+		
+		public void printLink(){
+			System.out.println(data1);
+		}
+		
+}
+class LinkList{
+	private Link first;
+	private Link last;
+	
+	public LinkList(){
+		first=null;
+	}
+	
+	public boolean isEmpty(){
+		return first==null;
+		
+	}
+	public void insert(int d1){
+		Link l=new Link(d1);
+		
+		if(first==null){
+			l.nextLink=first;
+			last=first=l;
+		}else{
+			last.nextLink=l;
+			l.nextLink=null;
+			last=l;
+		}
+		
+	}
+	public void insertFirst(int d1){
+		Link l=new Link(d1);
+		l.nextLink=first;
+		first=l;
+	}
+	
+	public void insertAny(int d1,int pos){
+		Link l=new Link(d1);
+		int count=0;
+		last=first;
+		
+		if(first==null&&pos==0){
+			l.nextLink=null;
+			first=l;
+		}
+		
+		if(pos==0){
+			insertFirst(d1);
+		}else{
+			System.out.println(last.data1+" "+count);
+			while(count!=(pos-1)){
+				last=last.nextLink;
+				count++;	
+			}
+			System.out.println(last.data1+" "+count);
+			if(last.nextLink==null){
+				last.nextLink=l;
+			}else{
+				l.nextLink=last.nextLink;
+				last.nextLink=l;
+			}
+		}
+		
+	}
+	
+	public void deleteFirst(){
+		
+		first=first.nextLink;
+			
+	}
+	public void deleteLast(){
+		Link temp;
+		temp=first;
+		
+		while(temp.nextLink!=last){
+			temp=temp.nextLink;
+			}
+		
+		last=temp;
+		last.nextLink=null;
+	}
+	
+	public void printList(){
+		Link cList=first;
+		System.out.println("List :");
+		while(cList!=null){
+			cList.printLink();
+			cList=cList.nextLink;
+			
+		}
+		System.out.println("");
+	}
+}
+public class LinkListTest {
+
+	public static void main(String[] args) {
+		
+		LinkList ll=new LinkList();
+		
+		ll.insert(1);
+		ll.insert(2);
+		ll.insert(3);
+		
+		ll.printList();
+		
+		ll.insertFirst(12);
+		ll.printList();
+		ll.deleteLast();	
+		ll.insertAny(11, 3);
+		ll.printList();
+
+	}
+
+}
+
+					</div>
 			</div>
-			<div class="post">
-				<h2 class="title"><a href="#">Consecteteur hendrerit </a></h2>
-				<p class="meta"><span class="date">August 10, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
-				<div style="clear: both;">&nbsp;</div>
-				<div class="entry">
-					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
-					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
-				</div>
+			
 			</div>
 			<div style="clear: both;">&nbsp;</div>
 		</div>
