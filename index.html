@@ -58,124 +58,124 @@ Released   : 20120902
 					<p>	class Link{  <br>
 		<br>
 	&nbsp;	int data1;<br>
-		Link nextLink;<br>
+	&nbsp;	Link nextLink;<br>
 		<br>
-		Link(int d1){<br>
-			data1=d1;<br>	
-			}<br>
+	&nbsp;	Link(int d1){<br>
+	&nbsp;&nbsp;		data1=d1;<br>	
+	&nbsp;		}<br>
 		<br>
-		public void printLink(){<br>
-			System.out.println(data1);<br>
-		}<br>
+	&nbsp;	public void printLink(){<br>
+	&nbsp;&nbsp;		System.out.println(data1);<br>
+	&nbsp;	}<br>
 		<br>
 }<br>
 class LinkList{<br>
-	private Link first;<br>
-	private Link last;<br>
+&nbsp;	private Link first;<br>
+&nbsp;	private Link last;<br>
 	<br>
-	public LinkList(){<br>
-		first=null;<br>
-	}<br>
+&nbsp;	public LinkList(){<br>
+&nbsp;&nbsp;		first=null;<br>
+&nbsp;	}<br>
 	<br>
-	public boolean isEmpty(){<br>
-		return first==null;<br>
+&nbsp;	public boolean isEmpty(){<br>
+&nbsp;&nbsp;		return first==null;<br>
 		<br>
-	}<br>
-	public void insert(int d1){<br>
-		Link l=new Link(d1);<br>
+&nbsp;	}<br>
+&nbsp;	public void insert(int d1){<br>
+&nbsp;&nbsp;		Link l=new Link(d1);<br>
 		<br>
-		if(first==null){<br>
-			l.nextLink=first;<br>
-			last=first=l;<br>
-		}else{<br>
-			last.nextLink=l;<br>
-			l.nextLink=null;<br>
-			last=l;<br>
-		}<br>
+&nbsp;&nbsp;		if(first==null){<br>
+&nbsp;&nbsp;&nbsp;			l.nextLink=first;<br>
+&nbsp;&nbsp;&nbsp;			last=first=l;<br>
+&nbsp;&nbsp;		}else{<br>
+&nbsp;&nbsp;&nbsp;			last.nextLink=l;<br>
+&nbsp;&nbsp;&nbsp;			l.nextLink=null;<br>
+&nbsp;&nbsp;&nbsp;			last=l;<br>
+&nbsp;&nbsp;		}<br>
 		<br>
-	}<br>
-	public void insertFirst(int d1){<br>
-		Link l=new Link(d1);<br>
-		l.nextLink=first;<br>
-		first=l;<br>
-	}<br>
+&nbsp;	}<br>
+&nbsp;	public void insertFirst(int d1){<br>
+&nbsp;&nbsp;		Link l=new Link(d1);<br>
+&nbsp;&nbsp;		l.nextLink=first;<br>
+&nbsp;&nbsp;		first=l;<br>
+&nbsp;	}<br>
 	<br>
-	public void insertAny(int d1,int pos){<br>
-		Link l=new Link(d1);<br>
-		int count=0;<br>
-		last=first;<br>
+&nbsp;	public void insertAny(int d1,int pos){<br>
+&nbsp;&nbsp;		Link l=new Link(d1);<br>
+&nbsp;&nbsp;		int count=0;<br>
+&nbsp;&nbsp;		last=first;<br>
 		<br>
-		if(first==null&&pos==0){<br>
-			l.nextLink=null;<br>
-			first=l;<br>
-		}<br>
+&nbsp;		if(first==null&&pos==0){<br>
+&nbsp;&nbsp;			l.nextLink=null;<br>
+&nbsp;&nbsp;			first=l;<br>
+&nbsp;		}<br>
 		<br>
-		if(pos==0){<br>
-			insertFirst(d1);<br>
-		}else{<br>
-			System.out.println(last.data1+" "+count);<br>
-			while(count!=(pos-1)){<br>
-				last=last.nextLink;<br>
-				count++;	<br>
-			}<br>
-			System.out.println(last.data1+" "+count);<br>
-			if(last.nextLink==null){<br>
-				last.nextLink=l;<br>
-			}else{<br>
-				l.nextLink=last.nextLink;<br>
-				last.nextLink=l;<br>
-			}<br>
-		}<br>
+&nbsp;		if(pos==0){<br>
+&nbsp;&nbsp;			insertFirst(d1);<br>
+&nbsp;		}else{<br>
+&nbsp;&nbsp;			System.out.println(last.data1+" "+count);<br>
+&nbsp;&nbsp;			while(count!=(pos-1)){<br>
+&nbsp;&nbsp;				last=last.nextLink;<br>
+&nbsp;&nbsp;				count++;	<br>
+&nbsp;&nbsp;			}<br>
+&nbsp;	&nbsp;		System.out.println(last.data1+" "+count);<br>
+&nbsp;&nbsp;			if(last.nextLink==null){<br>
+&nbsp;&nbsp;				last.nextLink=l;<br>
+&nbsp;&nbsp;			}else{<br>
+&nbsp;&nbsp;				l.nextLink=last.nextLink;<br>
+&nbsp;&nbsp;				last.nextLink=l;<br>
+&nbsp;&nbsp;			}<br>
+&nbsp;		}<br>
 		<br>
-	}<br>
+&nbsp;	}<br>
 	<br>
-	public void deleteFirst(){<br>
+&nbsp;	public void deleteFirst(){<br>
 		<br>
-		first=first.nextLink;<br>
+&nbsp;&nbsp;		first=first.nextLink;<br>
 			<br>
-	}<br>
-	public void deleteLast(){<br>
-		Link temp;<br>
-		temp=first;<br>
+&nbsp;	}<br>
+&nbsp;	public void deleteLast(){<br>
+&nbsp;	Link temp;<br>
+&nbsp;		temp=first;<br>
 		<br>
-		while(temp.nextLink!=last){<br>
-			temp=temp.nextLink;<br>
-			}<br>
+&nbsp;		while(temp.nextLink!=last){<br>
+&nbsp;&nbsp;			temp=temp.nextLink;<br>
+&nbsp;			}<br>
 		<br>
-		last=temp;<br>
-		last.nextLink=null;<br>
-	}<br>
+&nbsp;		last=temp;<br>
+&nbsp;		last.nextLink=null;<br>
+&nbsp;	}<br>
 	<br>
-	public void printList(){<br>
-		Link cList=first;<br>
-		System.out.println("List :");<br>
-		while(cList!=null){<br>
-			cList.printLink();<br>
-			cList=cList.nextLink;<br>
+&nbsp;	public void printList(){<br>
+&nbsp;		Link cList=first;<br>
+&nbsp;		System.out.println("List :");<br>
+&nbsp;		while(cList!=null){<br>
+&nbsp;&nbsp;			cList.printLink();<br>
+&nbsp;&nbsp;			cList=cList.nextLink;<br>
 			<br>
-		}<br>
-		System.out.println("");<br>
-	}<br>
+&nbsp;		}<br>
+&nbsp;		System.out.println("");<br>
+&nbsp;	}<br>
 }<br>
 public class LinkListTest {<br>
 <br>
-	public static void main(String[] args) {<br>
+&nbsp;	public static void main(String[] args) {<br>
 		<br>
-		LinkList ll=new LinkList();<br>
+&nbsp;		LinkList ll=new LinkList();<br>
 		<br>
-		ll.insert(1);<br>
-		ll.insert(2);<br>
-		ll.insert(3);<br>
+&nbsp;		ll.insert(1);<br>
+&nbsp;		ll.insert(2);<br>
+&nbsp;		ll.insert(3);<br>
 		<br>
-		ll.printList();<br>
+&nbsp;		ll.printList();<br>
 		<br>
-		ll.insertFirst(12);<br>
-		ll.printList();<br>
-		ll.deleteLast();<br>	
-		ll.insertAny(11, 3);<br>
-		ll.printList();<br>
+&nbsp;		ll.insertFirst(12);<br>
+&nbsp;		ll.printList();<br>
+&nbsp;		ll.deleteLast();<br>	
+&nbsp;		ll.insertAny(11, 3);<br>
+&nbsp;		ll.printList();<br>
 <br>
-	}<br>
+&nbsp;	}<br>
 
 }<br>
 </p>
