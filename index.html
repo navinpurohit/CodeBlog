@@ -55,130 +55,141 @@ Released   : 20120902
 				<h2 class="title"><a href="#">Implementation</a></h2>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					<p>	class Link{  <br>
-		<br>
-	&nbsp;	int data1;<br>
-	&nbsp;	Link nextLink;<br>
-		<br>
-	&nbsp;	Link(int d1){<br>
-	&nbsp;&nbsp;		data1=d1;<br>	
-	&nbsp;		}<br>
-		<br>
-	&nbsp;	public void printLink(){<br>
-	&nbsp;&nbsp;		System.out.println(data1);<br>
-	&nbsp;	}<br>
-		<br>
-}<br>
-class LinkList{<br>
-&nbsp;	private Link first;<br>
-&nbsp;	private Link last;<br>
-	<br>
-&nbsp;	public LinkList(){<br>
-&nbsp;&nbsp;		first=null;<br>
-&nbsp;	}<br>
-	<br>
-&nbsp;	public boolean isEmpty(){<br>
-&nbsp;&nbsp;		return first==null;<br>
-		<br>
-&nbsp;	}<br>
-&nbsp;	public void insert(int d1){<br>
-&nbsp;&nbsp;		Link l=new Link(d1);<br>
-		<br>
-&nbsp;&nbsp;		if(first==null){<br>
-&nbsp;&nbsp;&nbsp;			l.nextLink=first;<br>
-&nbsp;&nbsp;&nbsp;			last=first=l;<br>
-&nbsp;&nbsp;		}else{<br>
-&nbsp;&nbsp;&nbsp;			last.nextLink=l;<br>
-&nbsp;&nbsp;&nbsp;			l.nextLink=null;<br>
-&nbsp;&nbsp;&nbsp;			last=l;<br>
-&nbsp;&nbsp;		}<br>
-		<br>
-&nbsp;	}<br>
-&nbsp;	public void insertFirst(int d1){<br>
-&nbsp;&nbsp;		Link l=new Link(d1);<br>
-&nbsp;&nbsp;		l.nextLink=first;<br>
-&nbsp;&nbsp;		first=l;<br>
-&nbsp;	}<br>
-	<br>
-&nbsp;	public void insertAny(int d1,int pos){<br>
-&nbsp;&nbsp;		Link l=new Link(d1);<br>
-&nbsp;&nbsp;		int count=0;<br>
-&nbsp;&nbsp;		last=first;<br>
-		<br>
-&nbsp;		if(first==null&&pos==0){<br>
-&nbsp;&nbsp;			l.nextLink=null;<br>
-&nbsp;&nbsp;			first=l;<br>
-&nbsp;		}<br>
-		<br>
-&nbsp;		if(pos==0){<br>
-&nbsp;&nbsp;			insertFirst(d1);<br>
-&nbsp;		}else{<br>
-&nbsp;&nbsp;			System.out.println(last.data1+" "+count);<br>
-&nbsp;&nbsp;			while(count!=(pos-1)){<br>
-&nbsp;&nbsp;				last=last.nextLink;<br>
-&nbsp;&nbsp;				count++;	<br>
-&nbsp;&nbsp;			}<br>
-&nbsp;	&nbsp;		System.out.println(last.data1+" "+count);<br>
-&nbsp;&nbsp;			if(last.nextLink==null){<br>
-&nbsp;&nbsp;				last.nextLink=l;<br>
-&nbsp;&nbsp;			}else{<br>
-&nbsp;&nbsp;				l.nextLink=last.nextLink;<br>
-&nbsp;&nbsp;				last.nextLink=l;<br>
-&nbsp;&nbsp;			}<br>
-&nbsp;		}<br>
-		<br>
-&nbsp;	}<br>
-	<br>
-&nbsp;	public void deleteFirst(){<br>
-		<br>
-&nbsp;&nbsp;		first=first.nextLink;<br>
-			<br>
-&nbsp;	}<br>
-&nbsp;	public void deleteLast(){<br>
-&nbsp;	Link temp;<br>
-&nbsp;		temp=first;<br>
-		<br>
-&nbsp;		while(temp.nextLink!=last){<br>
-&nbsp;&nbsp;			temp=temp.nextLink;<br>
-&nbsp;			}<br>
-		<br>
-&nbsp;		last=temp;<br>
-&nbsp;		last.nextLink=null;<br>
-&nbsp;	}<br>
-	<br>
-&nbsp;	public void printList(){<br>
-&nbsp;		Link cList=first;<br>
-&nbsp;		System.out.println("List :");<br>
-&nbsp;		while(cList!=null){<br>
-&nbsp;&nbsp;			cList.printLink();<br>
-&nbsp;&nbsp;			cList=cList.nextLink;<br>
-			<br>
-&nbsp;		}<br>
-&nbsp;		System.out.println("");<br>
-&nbsp;	}<br>
-}<br>
-public class LinkListTest {<br>
-<br>
-&nbsp;	public static void main(String[] args) {<br>
-		<br>
-&nbsp;		LinkList ll=new LinkList();<br>
-		<br>
-&nbsp;		ll.insert(1);<br>
-&nbsp;		ll.insert(2);<br>
-&nbsp;		ll.insert(3);<br>
-		<br>
-&nbsp;		ll.printList();<br>
-		<br>
-&nbsp;		ll.insertFirst(12);<br>
-&nbsp;		ll.printList();<br>
-&nbsp;		ll.deleteLast();<br>	
-&nbsp;		ll.insertAny(11, 3);<br>
-&nbsp;		ll.printList();<br>
-<br>
-&nbsp;	}<br>
+				<pre><code>
+				package com.eric.singleLinkedList;
 
-}<br>
-</p>
+class Link {
+
+	int data1;
+	Link nextLink;
+
+	Link(int d1) {
+		data1 = d1;
+	}
+
+	public void printLink() {
+		System.out.println(data1);
+	}
+
+}
+
+class LinkList {
+	private Link first;
+	private Link last;
+
+	public LinkList() {
+		first = null;
+	}
+
+	public boolean isEmpty() {
+		return first == null;
+
+	}
+
+	public void insert(int d1) {
+		Link l = new Link(d1);
+
+		if (first == null) {
+			l.nextLink = first;
+			last = first = l;
+		} else {
+			last.nextLink = l;
+			l.nextLink = null;
+			last = l;
+		}
+
+	}
+
+	public void insertFirst(int d1) {
+		Link l = new Link(d1);
+		l.nextLink = first;
+		first = l;
+	}
+
+	public void insertAny(int d1, int pos) {
+		Link l = new Link(d1);
+		int count = 0;
+		last = first;
+
+		if (first == null && pos == 0) {
+			l.nextLink = null;
+			first = l;
+		}
+
+		if (pos == 0) {
+			insertFirst(d1);
+		} else {
+			System.out.println(last.data1 + " " + count);
+			while (count != (pos - 1)) {
+				last = last.nextLink;
+				count++;
+			}
+			System.out.println(last.data1 + " " + count);
+			if (last.nextLink == null) {
+				last.nextLink = l;
+			} else {
+				l.nextLink = last.nextLink;
+				last.nextLink = l;
+			}
+		}
+
+	}
+
+	public void deleteFirst() {
+
+		first = first.nextLink;
+
+	}
+
+	public void deleteLast() {
+		Link temp;
+		temp = first;
+
+		while (temp.nextLink != last) {
+			temp = temp.nextLink;
+		}
+
+		last = temp;
+		last.nextLink = null;
+	}
+
+	public void printList() {
+		Link cList = first;
+		System.out.println("List :");
+
+		while (cList != null) {
+
+			cList.printLink();
+			cList = cList.nextLink;
+
+		}
+		System.out.println("");
+	}
+}
+
+public class LinkListTest {
+
+	public static void main(String[] args) {
+
+		LinkList ll = new LinkList();
+
+		ll.insert(1);
+		ll.insert(2);
+		ll.insert(3);
+
+		ll.printList();
+
+		ll.insertFirst(12);
+		ll.printList();
+		ll.deleteLast();
+		ll.insertAny(11, 3);
+		ll.printList();
+
+	}
+
+}
+	
+				</code></pre>
 					</div>
 			</div>
 			
